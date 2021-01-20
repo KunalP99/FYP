@@ -41,7 +41,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            anim.SetBool("isJumping", true);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        else
+        {
+            anim.SetBool("isJumping", false);
         }
 
         float horizontal = Input.GetAxisRaw("Horizontal");
