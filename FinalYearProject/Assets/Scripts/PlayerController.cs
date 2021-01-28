@@ -23,9 +23,17 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;
 
+    public int maxHealth = 100;
+    public int currentHealth;
+    public Health healthBar;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMax(maxHealth);
+
     }
 
     // Update is called once per frame
