@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,13 +28,14 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public Health healthBar;
 
+    public GameObject[] bugButtons;
+
     void Start()
     {
         anim = GetComponent<Animator>();
 
         currentHealth = maxHealth;
         healthBar.SetMax(maxHealth);
-
     }
 
     // Update is called once per frame
@@ -85,5 +87,50 @@ public class PlayerController : MonoBehaviour
         // Adds velocity to player on the y-axis so that player will fall
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public void healHealth()
+    {
+        Time.timeScale = 1;
+
+        // Adds 20 to health
+        currentHealth += 20;
+
+        healthBar.SetHealth(currentHealth);
+
+        bugButtons = GameObject.FindGameObjectsWithTag("BugButton");
+
+        // Each button with the tag "BugButton" will be disabled when clicked
+        foreach (GameObject button in bugButtons)
+        {
+            button.SetActive(false);
+        }
+    }
+
+    public void takeDamage()
+    {
+        Time.timeScale = 1;
+
+        currentHealth -= 20;
+
+        healthBar.SetHealth(currentHealth);
+
+        bugButtons = GameObject.FindGameObjectsWithTag("BugButton");
+
+        // Each button with the tag "BugButton" will be disabled when clicked
+        foreach (GameObject button in bugButtons)
+        {
+            button.SetActive(false);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Frog")
+        {
+            currentHealth -= 40;
+
+            healthBar.SetHealth(currentHealth);
+        }
     }
 }

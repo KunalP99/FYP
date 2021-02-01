@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Log
+  - BugButton
+  - Tutorial
+  - Tutorial2
   layers:
   - Default
   - TransparentFX
