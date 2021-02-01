@@ -8,6 +8,7 @@ TagManager:
   - BugButton
   - Tutorial
   - Tutorial2
+  - Lake
   layers:
   - Default
   - TransparentFX

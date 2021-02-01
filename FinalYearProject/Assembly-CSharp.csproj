@@ -57,9 +57,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
+    <Compile Include="Assets\Scripts\Tutorials\TutorialText.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\InsectLog.cs" />
-    <Compile Include="Assets\Scripts\Tutorials\TutorialText.cs" />
+    <Compile Include="Assets\Scripts\Interact.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
