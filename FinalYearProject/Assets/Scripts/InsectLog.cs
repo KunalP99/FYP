@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InsectLog : MonoBehaviour
 {
     public GameObject bugButton1;
     public GameObject bugButton2;
     public GameObject bugButton3;
+
+    public TextMeshProUGUI logCounter;
+
+    public Objectives objectiveScript;
+
+    int logInt = 0;
 
     void OnTriggerEnter(Collider other)
     {
@@ -19,7 +26,16 @@ public class InsectLog : MonoBehaviour
             bugButton2.SetActive(true);
             bugButton3.SetActive(true);
 
+            // Increment logCounter in objectives script
+            logInt = logInt + 1;
+
+            UpdateText();
             Destroy(gameObject);
         }
+    }
+
+    void UpdateText()
+    {
+        logCounter.text = "Logs found: " + logInt + "/5";
     }
 }
