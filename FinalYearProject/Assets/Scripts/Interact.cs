@@ -9,7 +9,7 @@ public class Interact : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
         {
             // Display image of water somewhere on screen
             unpurifiedWaterImage.SetActive(true);

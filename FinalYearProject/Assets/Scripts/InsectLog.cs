@@ -11,8 +11,6 @@ public class InsectLog : MonoBehaviour
 
     public TextMeshProUGUI logCounter;
 
-    public Objectives objectiveScript;
-
     int logInt = 0;
 
     void OnTriggerEnter(Collider other)

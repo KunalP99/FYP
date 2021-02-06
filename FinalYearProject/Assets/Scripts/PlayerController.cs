@@ -41,6 +41,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Freezes player while animation is being performed
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dig"))
+        {
+            return;
+        }
+
         // Creates an invisible sphere bases on the variables 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 

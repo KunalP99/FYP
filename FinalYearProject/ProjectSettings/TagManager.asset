@@ -9,6 +9,9 @@ TagManager:
   - Tutorial
   - Tutorial2
   - Lake
+  - JournalUpdate1
+  - JournalUpdate2
+  - Frog
   layers:
   - Default
   - TransparentFX
