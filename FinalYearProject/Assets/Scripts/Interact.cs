@@ -7,6 +7,8 @@ public class Interact : MonoBehaviour
     public GameObject interactText;
     public GameObject unpurifiedWaterImage;
 
+    [HideInInspector] public bool waterCollected = false;
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
@@ -14,7 +16,7 @@ public class Interact : MonoBehaviour
             // Display image of water somewhere on screen
             unpurifiedWaterImage.SetActive(true);
 
-            // Let player know they have to boil water before drinking 
+            waterCollected = true;
 
             // Destroy so player cannot keep pressing E on the collider
             Destroy(this);
@@ -24,7 +26,7 @@ public class Interact : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             interactText.SetActive(true);
         }

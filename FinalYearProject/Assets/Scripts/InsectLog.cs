@@ -8,10 +8,9 @@ public class InsectLog : MonoBehaviour
     public GameObject bugButton1;
     public GameObject bugButton2;
     public GameObject bugButton3;
+    public GameObject chooseInsectText;
 
-    public TextMeshProUGUI logCounter;
-
-    int logInt = 0;
+    public PlayerController playerScript;
 
     void OnTriggerEnter(Collider other)
     {
@@ -23,17 +22,13 @@ public class InsectLog : MonoBehaviour
             bugButton1.SetActive(true);
             bugButton2.SetActive(true);
             bugButton3.SetActive(true);
+            chooseInsectText.SetActive(true);
 
-            // Increment logCounter in objectives script
-            logInt = logInt + 1;
+            // Adds log integer to the log total varibale in the player controller script
+            playerScript.logTotal = playerScript.logTotal + 1;
 
-            UpdateText();
-            Destroy(gameObject);
+            playerScript.UpdateText();
+            gameObject.SetActive(false);
         }
-    }
-
-    void UpdateText()
-    {
-        logCounter.text = "Logs found: " + logInt + "/5";
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,13 @@ public class PlayerController : MonoBehaviour
     public Health healthBar;
 
     public GameObject[] bugButtons;
+    public GameObject chooseInsectText;
+    public TextMeshProUGUI logCounter;
+    public InsectLog logScript;
+    public int logTotal = 0;
+
+    public GameObject levelCompleteText;
+
 
     void Start()
     {
@@ -41,7 +49,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Freezes player while animation is being performed
+        // Freezes player while dig animation is being performed
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dig"))
         {
             return;
@@ -93,6 +101,12 @@ public class PlayerController : MonoBehaviour
         // Adds velocity to player on the y-axis so that player will fall
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        // ADD THE WATER OBJECTIVE HERE TOO
+        if (logTotal == 4)
+        {
+            LevelComplete();
+        }
     }
 
     public void healHealth()
@@ -103,6 +117,8 @@ public class PlayerController : MonoBehaviour
         currentHealth += 20;
 
         healthBar.SetHealth(currentHealth);
+
+        chooseInsectText.SetActive(false);
 
         bugButtons = GameObject.FindGameObjectsWithTag("BugButton");
 
@@ -121,6 +137,8 @@ public class PlayerController : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
 
+        chooseInsectText.SetActive(false);
+
         bugButtons = GameObject.FindGameObjectsWithTag("BugButton");
 
         // Each button with the tag "BugButton" will be disabled when clicked
@@ -128,6 +146,16 @@ public class PlayerController : MonoBehaviour
         {
             button.SetActive(false);
         }
+    }
+
+    public void UpdateText()
+    {
+        logCounter.text = "Logs found: " + logTotal + "/4";
+    }
+
+    void LevelComplete()
+    {
+        levelCompleteText.SetActive(true);
     }
 
     void OnTriggerEnter(Collider other)

@@ -6,6 +6,11 @@ using TMPro;
 public class Objectives : MonoBehaviour
 {
     public GameObject logText;
+    public GameObject waterText;
+
+    public TextMeshProUGUI logColour;
+
+    public InsectLog logCount;
 
     // Update is called once per frame
     void Update()
@@ -14,10 +19,12 @@ public class Objectives : MonoBehaviour
         if (Input.GetButton("Objectives"))
         {
             logText.SetActive(true);
+            waterText.SetActive(true);
         }
         else if (!Input.GetButton("Objectives"))
         {
             logText.SetActive(false);
+            waterText.SetActive(false);
         }
     }
 }
