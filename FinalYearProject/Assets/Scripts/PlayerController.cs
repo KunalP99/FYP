@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
     public GameObject chooseInsectText;
     public TextMeshProUGUI logCounter;
     public InsectLog logScript;
+
     public int logTotal = 0;
+    public int waterCollected = 0;
 
     public GameObject levelCompleteText;
 
@@ -101,12 +103,6 @@ public class PlayerController : MonoBehaviour
         // Adds velocity to player on the y-axis so that player will fall
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        // ADD THE WATER OBJECTIVE HERE TOO
-        if (logTotal == 4)
-        {
-            LevelComplete();
-        }
     }
 
     public void healHealth()
@@ -127,6 +123,12 @@ public class PlayerController : MonoBehaviour
         {
             button.SetActive(false);
         }
+
+        // Win condition - need to set buttons active
+        if (logTotal == 4 && waterCollected >= 2)
+        {
+            LevelComplete();
+        }
     }
 
     public void takeDamage()
@@ -146,6 +148,12 @@ public class PlayerController : MonoBehaviour
         {
             button.SetActive(false);
         }
+
+        // Win condition
+        if (logTotal == 4 && waterCollected >= 2)
+        {
+            LevelComplete();
+        }
     }
 
     public void UpdateText()
@@ -153,9 +161,11 @@ public class PlayerController : MonoBehaviour
         logCounter.text = "Logs found: " + logTotal + "/4";
     }
 
-    void LevelComplete()
+    public void LevelComplete()
     {
         levelCompleteText.SetActive(true);
+
+        // Display buttons that allow player to move on to the next level
     }
 
     void OnTriggerEnter(Collider other)

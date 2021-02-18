@@ -10,6 +10,8 @@ public class CorrectCattail : MonoBehaviour
     public GameObject terrainChange;
     public GameObject waterImage;
 
+    public PlayerController playerScript;
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
@@ -20,11 +22,16 @@ public class CorrectCattail : MonoBehaviour
 
             waterImage.SetActive(true);
 
+            playerScript.waterCollected = playerScript.waterCollected + 1;
+
             Destroy(gameObject);
             anim.SetTrigger("isDigging");
             text.SetActive(false);
 
-            // A way to show that the player chose the correct plant
+            if (playerScript.logTotal == 4 && playerScript.waterCollected >= 2)
+            {
+                playerScript.LevelComplete();
+            }
         }
         else if (other.gameObject.tag == "Player")
         {

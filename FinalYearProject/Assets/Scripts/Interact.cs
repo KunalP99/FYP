@@ -9,6 +9,8 @@ public class Interact : MonoBehaviour
 
     [HideInInspector] public bool waterCollected = false;
 
+    public PlayerController playerScript;
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
@@ -20,7 +22,6 @@ public class Interact : MonoBehaviour
 
             // Destroy so player cannot keep pressing E on the collider
             Destroy(this);
-            Debug.Log("Player pressed E");
         }
     }
 
