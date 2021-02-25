@@ -6,16 +6,24 @@ public class Journal : MonoBehaviour
 {
     public GameObject journal;
 
+    [Header("Level 1 Text")]
     public GameObject logText;
     public GameObject lakeText;
-    public GameObject unpurifiedTitle;
+    public GameObject unpurifiedText;
+    public GameObject frogText;
+    public GameObject purifiedText;
 
     public GameObject journalUpdateText;
     public GameObject journalUpdateText2;
+    public GameObject journalUpdateText3;
+    public GameObject journalUpdateText4;
 
+    [Header("Level 2 Text")]
     bool journalActive = false;
     bool journalUpdate1 = false;
     bool journalUpdate2 = false;
+    bool journalUpdate3 = false;
+    bool journalUpdate4 = false;
 
     // Update is called once per frame
     void Update()
@@ -38,7 +46,17 @@ public class Journal : MonoBehaviour
             if (journalUpdate2 == true)
             {
                 lakeText.SetActive(true);
-                unpurifiedTitle.SetActive(true);
+                unpurifiedText.SetActive(true);
+            }
+
+            if (journalUpdate3 == true)
+            {
+                frogText.SetActive(true);
+            }
+
+            if (journalUpdate4 == true)
+            {
+                purifiedText.SetActive(true);
             }
         }
 
@@ -62,6 +80,18 @@ public class Journal : MonoBehaviour
         {
             journalUpdateText2.SetActive(true);
             journalUpdate2 = true;
+        }
+
+        if (other.gameObject.tag == "JournalUpdate3")
+        {
+            journalUpdateText3.SetActive(true);
+            journalUpdate3 = true;
+        }
+
+        if(other.gameObject.tag == "JournalUpdate4")
+        {
+            journalUpdateText4.SetActive(true);
+            journalUpdate4 = true;
         }
     }
 }

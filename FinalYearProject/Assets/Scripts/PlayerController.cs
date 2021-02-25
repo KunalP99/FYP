@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float movespeed = 5f;
+    public float movespeed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -29,16 +29,20 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public Health healthBar;
 
+    [Header("Level 1 variables")]
     public GameObject[] bugButtons;
     public GameObject chooseInsectText;
     public TextMeshProUGUI logCounter;
     public InsectLog logScript;
 
-    public int logTotal = 0;
-    public int waterCollected = 0;
+    [HideInInspector] public int logTotal = 0;
+    [HideInInspector] public int waterCollected = 0;
 
     public GameObject levelCompleteText;
 
+    [Header("Level 2 variables")]
+    bool enableSprint;
+    public float stamina = 10000f;
 
     void Start()
     {
@@ -73,6 +77,21 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool("isJumping", false);
+        }
+
+        // SPRINT MECHANIC
+        if (Input.GetKey(KeyCode.LeftShift) && enableSprint == true)
+        {
+            movespeed = 18f;
+            stamina = stamina - 0.1f;
+            anim.SetBool("isSprinting", true);
+            Debug.Log("Player is sprinting");
+        }
+        else
+        {
+            movespeed = 12f;
+            stamina = stamina + 0.1f;
+            anim.SetBool("isSprinting", false);
         }
 
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -172,9 +191,22 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Frog")
         {
+            currentHealth -= 30;
+
+            healthBar.SetHealth(currentHealth);
+        }
+        else if (other.gameObject.tag == "Scorpion")
+        {
             currentHealth -= 40;
 
             healthBar.SetHealth(currentHealth);
         }
+
+        if (other.gameObject.tag == "EnableSprint")
+        {
+            enableSprint = true;
+        }
+
+
     }
 }

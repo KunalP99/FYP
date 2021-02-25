@@ -12,6 +12,10 @@ TagManager:
   - JournalUpdate1
   - JournalUpdate2
   - Frog
+  - EnableSprint
+  - JournalUpdate3
+  - JournalUpdate4
+  - Scorpion
   layers:
   - Default
   - TransparentFX
@@ -23,7 +27,7 @@ TagManager:
   - 
   - Ground
   - Post-Processing
-  - 
+  - Player
   - 
   - 
   - 
