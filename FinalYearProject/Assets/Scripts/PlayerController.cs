@@ -41,8 +41,12 @@ public class PlayerController : MonoBehaviour
     public GameObject levelCompleteText;
 
     [Header("Level 2 variables")]
-    bool enableSprint;
+    public bool enableSprint;
     public float stamina = 10000f;
+
+    public GameObject turnBackText;
+
+    public GameObject[] cactusButtons;
 
     void Start()
     {
@@ -57,6 +61,11 @@ public class PlayerController : MonoBehaviour
     {
         // Freezes player while dig animation is being performed
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dig"))
+        {
+            return;
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Collect"))
         {
             return;
         }
@@ -175,6 +184,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void CactusDrink()
+    {
+        Time.timeScale = 1;
+
+        // Reduce max health as well as heal health
+        currentHealth += 30;
+        maxHealth = 80;
+        healthBar.SetHealth(currentHealth);
+
+        cactusButtons = GameObject.FindGameObjectsWithTag("CactusButton");
+
+        foreach (GameObject button in cactusButtons)
+        {
+            button.SetActive(false);
+        }
+    }
+
+    public void CactusCool()
+    {
+        Time.timeScale = 1;
+
+        currentHealth += 15;
+        healthBar.SetHealth(currentHealth);
+
+        cactusButtons = GameObject.FindGameObjectsWithTag("CactusButton");
+
+        foreach (GameObject button in cactusButtons)
+        {
+            button.SetActive(false);
+        }
+    }
+
     public void UpdateText()
     {
         logCounter.text = "Logs found: " + logTotal + "/4";
@@ -205,8 +246,31 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "EnableSprint")
         {
             enableSprint = true;
+        }  
+
+        if (other.gameObject.tag == "Hill")
+        {
+            // Journal update
+
+            Debug.Log("Player on hill");
         }
+    }
 
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "TurnBack")
+        {
+            turnBackText.SetActive(true);
+        }
+        else
+        {
+            turnBackText.SetActive(false);
+        }
+    }
 
+    void OnTriggerExit(Collider other)
+    {
+        // This is just to make the turn back text dissappear when the player is not on it
+        turnBackText.SetActive(false);
     }
 }

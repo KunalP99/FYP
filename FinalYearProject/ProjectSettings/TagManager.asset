@@ -16,6 +16,10 @@ TagManager:
   - JournalUpdate3
   - JournalUpdate4
   - Scorpion
+  - CactusButton
+  - DesertWater
+  - TurnBack
+  - Hill
   layers:
   - Default
   - TransparentFX
