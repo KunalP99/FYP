@@ -20,6 +20,7 @@ TagManager:
   - DesertWater
   - TurnBack
   - Hill
+  - Shelter
   layers:
   - Default
   - TransparentFX

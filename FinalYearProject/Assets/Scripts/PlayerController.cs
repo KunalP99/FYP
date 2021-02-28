@@ -42,11 +42,15 @@ public class PlayerController : MonoBehaviour
 
     [Header("Level 2 variables")]
     public bool enableSprint;
-    public float stamina = 10000f;
+    [HideInInspector] public bool shelterFound = false;
+    [HideInInspector] public bool hillFound = false;
 
     public GameObject turnBackText;
 
     public GameObject[] cactusButtons;
+
+    public int cactusTotal = 0;
+    public TextMeshProUGUI cactusCounter;
 
     void Start()
     {
@@ -92,14 +96,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && enableSprint == true)
         {
             movespeed = 18f;
-            stamina = stamina - 0.1f;
             anim.SetBool("isSprinting", true);
-            Debug.Log("Player is sprinting");
         }
         else
         {
             movespeed = 12f;
-            stamina = stamina + 0.1f;
             anim.SetBool("isSprinting", false);
         }
 
@@ -219,6 +220,7 @@ public class PlayerController : MonoBehaviour
     public void UpdateText()
     {
         logCounter.text = "Logs found: " + logTotal + "/4";
+        cactusCounter.text = "Cactuses found: " + cactusTotal + "/5";
     }
 
     public void LevelComplete()
@@ -250,9 +252,14 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag == "Hill")
         {
+            hillFound = true;
             // Journal update
+        }
 
-            Debug.Log("Player on hill");
+        if (other.gameObject.tag == "Shelter")
+        {
+            shelterFound = true;
+            // Journal update
         }
     }
 
