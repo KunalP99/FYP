@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
     public int cactusTotal = 0;
     public TextMeshProUGUI cactusCounter;
 
+    public DesertWater desertWaterScript;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -190,8 +192,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
 
         // Reduce max health as well as heal health
-        currentHealth += 30;
-        maxHealth = 80;
+        currentHealth -= 50;
         healthBar.SetHealth(currentHealth);
 
         cactusButtons = GameObject.FindGameObjectsWithTag("CactusButton");
@@ -199,6 +200,11 @@ public class PlayerController : MonoBehaviour
         foreach (GameObject button in cactusButtons)
         {
             button.SetActive(false);
+        }
+
+        if (cactusTotal == 5 && shelterFound == true && hillFound == true && desertWaterScript.waterFound2 == true)
+        {
+            LevelComplete();
         }
     }
 
@@ -215,19 +221,17 @@ public class PlayerController : MonoBehaviour
         {
             button.SetActive(false);
         }
+
+        if (cactusTotal == 5 && shelterFound == true && hillFound == true && desertWaterScript.waterFound2 == true)
+        {
+            LevelComplete();
+        }
     }
 
     public void UpdateText()
     {
         logCounter.text = "Logs found: " + logTotal + "/4";
         cactusCounter.text = "Cactuses found: " + cactusTotal + "/5";
-    }
-
-    public void LevelComplete()
-    {
-        levelCompleteText.SetActive(true);
-
-        // Display buttons that allow player to move on to the next level
     }
 
     void OnTriggerEnter(Collider other)
@@ -253,13 +257,22 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Hill")
         {
             hillFound = true;
-            // Journal update
+
+            if (cactusTotal == 5 && shelterFound == true && hillFound == true && desertWaterScript.waterFound2 == true)
+            {
+                LevelComplete();
+            }
+
         }
 
         if (other.gameObject.tag == "Shelter")
         {
             shelterFound = true;
-            // Journal update
+
+            if (cactusTotal == 5 && shelterFound == true && hillFound == true && desertWaterScript.waterFound2 == true)
+            {
+                LevelComplete();
+            }
         }
     }
 
@@ -273,6 +286,13 @@ public class PlayerController : MonoBehaviour
         {
             turnBackText.SetActive(false);
         }
+    }
+
+    public void LevelComplete()
+    {
+        levelCompleteText.SetActive(true);
+
+        // Display buttons that allow player to move on to the next level
     }
 
     void OnTriggerExit(Collider other)

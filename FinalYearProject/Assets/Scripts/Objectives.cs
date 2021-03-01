@@ -15,9 +15,9 @@ public class Objectives : MonoBehaviour
     public GameObject objectiveFourComplete;
 
     public PlayerController playerScript;
-    public DesertWater desertWaterScript;
-
-    public TextMeshProUGUI logColour;
+    public Interact lake;
+    public Campfire campfire;
+    public CorrectCattail cattail;
 
     public InsectLog logCount;
 
@@ -34,22 +34,22 @@ public class Objectives : MonoBehaviour
 
             // REMEMBER TO DO THE OR CONDITIONS FOR LEVEL 1
             // Shows the text green when conditions are met
-            if (playerScript.logTotal == 4 || playerScript.cactusTotal == 5)
+            if (playerScript.logTotal == 4 )
             {
                 objectiveOneComplete.SetActive(true);
             }
-            
-            if (playerScript.shelterFound == true)
+
+            if (lake.waterCollected == true)
             {
                 objectiveTwoComplete.SetActive(true);
             }
             
-            if (playerScript.hillFound == true)
+            if (campfire.waterPurified == true)
             {
                 objectiveThreeComplete.SetActive(true);
             }
 
-            if (desertWaterScript.waterFound2 == true)
+            if (cattail.cattailFound == true)
             {
                 objectiveFourComplete.SetActive(true);
             }

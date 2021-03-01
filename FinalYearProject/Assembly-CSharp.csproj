@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Journal.cs" />
     <Compile Include="Assets\Scripts\Campfire.cs" />
     <Compile Include="Assets\Scripts\WrongCattails.cs" />
+    <Compile Include="Assets\Scripts\DesertWater.cs" />
     <Compile Include="Assets\Scripts\Objectives.cs" />
     <Compile Include="Assets\Scripts\Tutorials\TutorialText.cs" />
     <Compile Include="Assets\Scripts\Scorpion.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Assets\Scripts\InsectLog.cs" />
     <Compile Include="Assets\Scripts\Cactus.cs" />
     <Compile Include="Assets\Scripts\Interact.cs" />
-    <Compile Include="Assets\Scripts\DesertWater.cs" />
+    <Compile Include="Assets\Scripts\Objectives2.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />

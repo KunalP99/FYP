@@ -12,6 +12,8 @@ public class Campfire : MonoBehaviour
 
     public PlayerController playerScript;
 
+    [HideInInspector] public bool waterPurified = false;
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E) && isWaterCollected.waterCollected == true) 
@@ -19,7 +21,7 @@ public class Campfire : MonoBehaviour
             unpurifiedImage.SetActive(false);
             waterImage.SetActive(true);
             playerScript.waterCollected = playerScript.waterCollected + 1;
-            Debug.Log("Water is purified!!!!");
+            waterPurified = true;
 
             if (playerScript.logTotal == 4 && playerScript.waterCollected >= 2)
             {

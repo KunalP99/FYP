@@ -12,6 +12,8 @@ public class CorrectCattail : MonoBehaviour
 
     public PlayerController playerScript;
 
+    [HideInInspector] public bool cattailFound = false;
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
@@ -21,6 +23,7 @@ public class CorrectCattail : MonoBehaviour
             terrainChange.SetActive(true);
 
             waterImage.SetActive(true);
+            cattailFound = true;
 
             playerScript.waterCollected = playerScript.waterCollected + 1;
 

@@ -7,11 +7,11 @@ public class Journal : MonoBehaviour
     public GameObject journal;
 
     [Header("Level 1 Text")]
-    public GameObject logText;
-    public GameObject lakeText;
-    public GameObject unpurifiedText;
-    public GameObject frogText;
-    public GameObject purifiedText;
+    public GameObject firstText;
+    public GameObject secondText;
+    public GameObject thirdText;
+    public GameObject fourthText;
+    public GameObject fifthText;
 
     public GameObject journalUpdateText;
     public GameObject journalUpdateText2;
@@ -40,23 +40,23 @@ public class Journal : MonoBehaviour
 
             if (journalUpdate1 == true)
             {
-                logText.SetActive(true);
+                firstText.SetActive(true);
             }
 
             if (journalUpdate2 == true)
             {
-                lakeText.SetActive(true);
-                unpurifiedText.SetActive(true);
+                secondText.SetActive(true);
+                thirdText.SetActive(true);
             }
 
             if (journalUpdate3 == true)
             {
-                frogText.SetActive(true);
+                fourthText.SetActive(true);
             }
 
             if (journalUpdate4 == true)
             {
-                purifiedText.SetActive(true);
+                fifthText.SetActive(true);
             }
         }
 
