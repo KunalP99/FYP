@@ -54,12 +54,18 @@ public class PlayerController : MonoBehaviour
 
     public DesertWater desertWaterScript;
 
+    [Header("Level 3 variables")]
+    public GameObject[] berryButtons;
+    public GameObject chooseBerryText;
+
+    public int rockCollected = 0;
+
     void Start()
     {
-        anim = GetComponent<Animator>();
-
         currentHealth = maxHealth;
         healthBar.SetMax(maxHealth);
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -191,7 +197,6 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        // Reduce max health as well as heal health
         currentHealth -= 50;
         healthBar.SetHealth(currentHealth);
 
@@ -225,6 +230,39 @@ public class PlayerController : MonoBehaviour
         if (cactusTotal == 5 && shelterFound == true && hillFound == true && desertWaterScript.waterFound2 == true)
         {
             LevelComplete();
+        }
+    }
+
+    public void healBerry()
+    {
+        Time.timeScale = 1;
+
+        currentHealth += 20;
+        healthBar.SetHealth(currentHealth);
+        chooseBerryText.SetActive(false);
+
+        berryButtons = GameObject.FindGameObjectsWithTag("BerryButton");
+
+        foreach (GameObject button in berryButtons)
+        {
+            button.SetActive(false);
+        }
+
+    }
+
+    public void hurtBerry()
+    {
+        Time.timeScale = 1;
+
+        currentHealth -= 50;
+        healthBar.SetHealth(currentHealth);
+        chooseBerryText.SetActive(false);
+
+        berryButtons = GameObject.FindGameObjectsWithTag("BerryButton");
+
+        foreach (GameObject button in berryButtons)
+        {
+            button.SetActive(false);
         }
     }
 
@@ -273,6 +311,12 @@ public class PlayerController : MonoBehaviour
             {
                 LevelComplete();
             }
+        }
+
+        if (other.gameObject.tag == "Rock")
+        {
+            rockCollected = rockCollected + 1;
+            Destroy(other.gameObject);
         }
     }
 

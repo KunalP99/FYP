@@ -53,6 +53,7 @@ public class Scorpion : MonoBehaviour
             agent.SetDestination(walkPoint);
         }
 
+        // If distance is less than 1, then walkpoint is reached
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         if (distanceToWalkPoint.magnitude < 1f)
@@ -63,11 +64,14 @@ public class Scorpion : MonoBehaviour
 
     private void SearchWalkPoint()
     {
+        // Return a random value depending how high walk point range is
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
+
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
+        // Checks if point is on the ground, so object doesn't walk off the map
         if (Physics.Raycast(walkPoint, -transform.up, 2f, isGround))
         {
             walkPointSet = true;
@@ -78,4 +82,6 @@ public class Scorpion : MonoBehaviour
     {
         agent.SetDestination(player.position);
     }
+
+
 }

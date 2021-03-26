@@ -58,18 +58,21 @@
     <Compile Include="Assets\Scripts\CorrectCattail.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
+    <Compile Include="Assets\Scripts\Berries.cs" />
     <Compile Include="Assets\Scripts\Journal.cs" />
     <Compile Include="Assets\Scripts\Campfire.cs" />
     <Compile Include="Assets\Scripts\WrongCattails.cs" />
     <Compile Include="Assets\Scripts\DesertWater.cs" />
     <Compile Include="Assets\Scripts\Objectives.cs" />
     <Compile Include="Assets\Scripts\Tutorials\TutorialText.cs" />
+    <Compile Include="Assets\Scripts\Objectives2.cs" />
     <Compile Include="Assets\Scripts\Scorpion.cs" />
+    <Compile Include="Assets\Scripts\SOS.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\InsectLog.cs" />
     <Compile Include="Assets\Scripts\Cactus.cs" />
     <Compile Include="Assets\Scripts\Interact.cs" />
-    <Compile Include="Assets\Scripts\Objectives2.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />

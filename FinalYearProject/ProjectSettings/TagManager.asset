@@ -21,6 +21,8 @@ TagManager:
   - TurnBack
   - Hill
   - Shelter
+  - BerryButton
+  - Rock
   layers:
   - Default
   - TransparentFX

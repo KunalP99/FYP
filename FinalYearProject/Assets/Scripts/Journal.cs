@@ -31,8 +31,6 @@ public class Journal : MonoBehaviour
         // Player presses J, time stops and when J is pressed again, time continues
         if (Input.GetKeyDown(KeyCode.J) && journalActive == false)
         {
-            // When player triggers a collider, the text is set active, but can only show when the player has the journal active
-
             // Make the text the child of the journal game object so when it is set active, it'll only show when journal is active
             journal.SetActive(true);
             journalActive = true;
@@ -59,10 +57,10 @@ public class Journal : MonoBehaviour
                 fifthText.SetActive(true);
             }
         }
-
         else if (Input.GetKeyDown(KeyCode.J) && journalActive == true)
         {
             journal.SetActive(false);
+
             journalActive = false;
             Time.timeScale = 1;
         }

@@ -13976,6 +13976,9 @@ MonoBehaviour:
   cactusTotal: 0
   cactusCounter: {fileID: 1426492656}
   desertWaterScript: {fileID: 547389532}
+  berryButtons: []
+  chooseBerryText: {fileID: 0}
+  rockCollected: 0
 --- !u!143 &1120873066
 CharacterController:
   m_ObjectHideFlags: 0
